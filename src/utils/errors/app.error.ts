@@ -66,3 +66,26 @@ export class ValidatortError implements AppError{
     }
 } 
 
+export class duplicateEntryError implements AppError{
+    statusCode: number;
+    message: string;
+    name: string;
+
+    constructor(message:string){
+        this.statusCode = 409;
+        this.name = "duplicateEntryError";
+        this.message = message;
+    }
+}
+
+export class BadRequestError implements AppError{
+    statusCode: number;
+    message: string;
+    name: string;
+
+    constructor(message:string){
+        this.statusCode = 400;
+        this.name = "BadRequestError";
+        this.message = message;
+    }
+}

@@ -9,7 +9,8 @@ import sequelize from './sequelize';
 
 class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare id: CreationOptional<number>;
-  declare name: string;
+  declare first_name: string;
+  declare last_name: string;
   declare email: string;
   declare phone: string;
   declare password: string;
@@ -29,7 +30,11 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -195,7 +195,7 @@ This migration is nothing but the version of the table here you have to write th
 
 ## 🚀 Execute the Migration
 
-after writing migration also add below script in the migration
+after writing migration also add below script in the package.json it will help to run migrate, rollback easily without writing everytime sequelize-cli db:migrate on the terminal
 ```js
 "scripts": {
     "start": "ts-node src/server.ts",
@@ -209,5 +209,13 @@ after writing migration also add below script in the migration
  * Also create your databae whatever you have named in the .env file(DB_NAME)
 
 ```bash
-npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate or 
+npm run migrate 
+if configured in the package.json file
 ```
+
+# Writing API to create user.
+
+* Till so far we have setup the sequelize and create model, run migration on the basis of model and finally write sequelize query to create a table and then migrate the db of it's first version now we have to create user so for that we need to write api.
+
+* So to create api we will use the same flow that we have used in the HotelService model like top to bottom, repository>service>controller>router

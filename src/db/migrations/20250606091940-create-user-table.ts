@@ -8,7 +8,7 @@ import { DataTypes, QueryInterface } from "sequelize";
 //         first_name VARCHAR(255) NOT NULL,
 //         last_name VARCHAR(255) NOT NULL,
 //         email VARCHAR(255) NOT NULL UNIQUE,
-//         phone VARCHAR(20) NOT NULL UNIQUE,
+//         phone VARCHAR(20) NOT NULL,
 //         password VARCHAR(255) NOT NULL,
 //         role ENUM('user', 'admin') NOT NULL DEFAULT 'user',
 //         strike_count INT DEFAULT 0,
@@ -52,7 +52,6 @@ export default {
       phone: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        unique: true,
       },
       password: {
         type: DataTypes.STRING(255),
@@ -76,17 +75,17 @@ export default {
         allowNull: true,
         defaultValue: null,
       },
-      createdAt: {
+      created_At: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: new Date(), // Or Sequelize.literal('CURRENT_TIMESTAMP')
       },
-      updatedAt: {
+      updated_At: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: new Date(),
       },
-      deletedAt: {
+      deleted_At: {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: null,
