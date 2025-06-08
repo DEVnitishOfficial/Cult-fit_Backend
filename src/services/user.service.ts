@@ -22,10 +22,7 @@ export async function createUserService(userData: createUserDTO) {
 }
 
 export async function updateUserById(userId: number, userData: Partial<createUserDTO>){
-    const updatedDetail = updateUserExceptEmail(userId, userData);
-    if(updatedDetail === null){
-        throw new internalServerError('Unable to update user')
-    }
+    const updatedDetail = await updateUserExceptEmail(userId, userData);
     return updatedDetail
 }
 

@@ -16,7 +16,7 @@ export async function createUserHandler(req:Request, res:Response, next:NextFunc
 }
 
 export async function updateUserByIdHandler(req:Request,res:Response,next:NextFunction){
-    const updatedUserResponse = updateUserById(Number(req.params.id),req.body)
+    const updatedUserResponse = await updateUserById(Number(req.params.id),req.body)
 
     res.status(StatusCodes.OK).json({
         success:true,

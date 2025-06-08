@@ -1,7 +1,7 @@
 import logger from "../config/logger.config";
 import User from "../db/models/user";
 import { createUserDTO, updateUserDTO } from "../dto/user.dto";
-import { BadRequestError } from "../utils/errors/app.error";
+import { BadRequestError, internalServerError } from "../utils/errors/app.error";
 
 
 export async function createUser(userData: createUserDTO) {
@@ -17,20 +17,10 @@ export async function createUser(userData: createUserDTO) {
     return user;
 }
 
-// export async function updateUser(userId: number, userData: Partial<createUserDTO>) {
-//     const user = await User.findByPk(userId);
-//     if (!user) {
-//         throw new Error(`User with ID ${userId} not found`);
-//     }
-
-//     const updatedUser = await user.update(userData);
-//     logger.info(`User updated successfully ${updatedUser.id}`);
-//     return updatedUser;
-// }
-
 export async function updateUserExceptEmail(userId: number, userData: updateUserDTO) {
-    
+
     const user = await User.findByPk(userId);
+    
     if (!user) {
         throw new BadRequestError(`User with ID ${userId} not found`);
     }
