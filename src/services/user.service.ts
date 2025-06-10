@@ -1,8 +1,8 @@
 import User from "../db/models/user";
 import { Op } from "sequelize";
 import { createUserDTO } from "../dto/user.dto";
-import { createUser, updateUserExceptEmail } from "../repositories/user.repositories";
-import { duplicateEntryError, internalServerError } from "../utils/errors/app.error";
+import { createUser, getAllsoftDeleteduser, getAllUser, getUserById, hardDeleteUserById, softDeleteUserById, updateUserExceptEmail } from "../repositories/user.repositories";
+import { duplicateEntryError } from "../utils/errors/app.error";
 
 
 
@@ -25,4 +25,31 @@ export async function updateUserById(userId: number, userData: Partial<createUse
     const updatedDetail = await updateUserExceptEmail(userId, userData);
     return updatedDetail
 }
+
+export async function getUserByIdService(userId:number){
+   const userDetail = await getUserById(userId);
+   return userDetail;
+};
+export async function softDeleteUserByIdService(userId:number){
+   const userDetail = await softDeleteUserById(userId);
+   return userDetail;
+};
+
+export async function hardDeleteUserByIdService(userId:number){
+   const userDetail = await hardDeleteUserById(userId);
+   return userDetail;
+};
+
+export async function getAllUserService(){
+   const userDetail = await getAllUser();
+   return userDetail;
+};
+
+export async function getAllsoftDeleteduserService(){
+  const deletedUser =  getAllsoftDeleteduser();
+  return deletedUser;
+}
+
+
+
 
