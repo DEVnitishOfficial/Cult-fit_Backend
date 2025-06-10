@@ -219,3 +219,12 @@ if configured in the package.json file
 * Till so far we have setup the sequelize and create model, run migration on the basis of model and finally write sequelize query to create a table and then migrate the db of it's first version now we have to create user so for that we need to write api.
 
 * So to create api we will use the same flow that we have used in the HotelService model like top to bottom, repository>service>controller>router
+
+* all api related to user like create update read delete, soft delete,hard delte, getDeletedRecord, deleteSoftDeletedUser etc are completed now we will move towards center management.
+
+# Center Management started.
+
+So as usual first we will create a model then we will run the migration command
+
+* created center and centerHoiday models successfully.
+* Now i run ----> npm run migrate
