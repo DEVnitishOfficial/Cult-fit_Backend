@@ -184,7 +184,7 @@ Migration folder is used to create different **versions of the database**.
 
 🛠️ Now Run the command below. It will create a **migration file**:
 
-* Run command from the src>db
+* Run command from the src>db because all our sequlize setup are there like migration, model,seeders etc. 
 
 ```bash
 npx sequelize-cli migration:generate --name create-user-table
@@ -210,7 +210,7 @@ after writing migration also add below script in the package.json it will help t
 
 ```bash
 npx sequelize-cli db:migrate or 
-npm run migrate 
+npm run migrate(run from src)
 if configured in the package.json file
 ```
 
@@ -227,4 +227,4 @@ if configured in the package.json file
 So as usual first we will create a model then we will run the migration command
 
 * created center and centerHoiday models successfully.
-* Now i run ----> npm run migrate
+* Now i run ----> npm run migrate and successfully table created in the mysql db
