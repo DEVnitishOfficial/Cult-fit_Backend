@@ -14,7 +14,7 @@ export const centerHolidaySchema = z.object({
     end_date: z.string().transform((val) => new Date(val)),
     reason: z.string().min(3, "Reason must be at least 3 characters long").optional(),
 })
-
+// TODO : SOLVE THIS TYPESCRIPT ERROR
 // .superRefine((data, ctx) => {
 //   if (data.end_date < data.start_date) {
 //     ctx.addIssue({

@@ -5,7 +5,7 @@ import { NotFoundError } from "../utils/errors/app.error";
 
 
 export async function createCenter(centerData: centerDTO) {
-    console.log('see the centerdata>>>>',centerData);
+
 const center = await Center.create({
         name: centerData.name,
         address: centerData.address,
@@ -36,5 +36,16 @@ export async function getAllCenters() {
     }
     logger.info(`All centers retrieved successfully`);
     return centers;
+}
+
+export async function deleteCenterById(centerId: number) {
+    const center = await Center.findByPk(centerId);
+    if (!center) {
+        logger.error(`Center with id ${centerId} not found`);
+        throw new NotFoundError(`Center with id ${centerId} not found`);
+    }
+    await center.destroy();
+    logger.info(`Center with id ${centerId} deleted successfully`);
+    return { message: `Center with id ${centerId} deleted successfully` };
 }
 

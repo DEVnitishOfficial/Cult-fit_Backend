@@ -1,6 +1,6 @@
 import Center from "../db/models/center";
 import { centerDTO } from "../dto/center.dto";
-import { createCenter, getAllCenters, getCenterById } from "../repositories/center.repositories";
+import { createCenter, deleteCenterById, getAllCenters, getCenterById } from "../repositories/center.repositories";
 import { duplicateEntryError, NotFoundError } from "../utils/errors/app.error";
 
 export async function createCenterService(centerData: centerDTO) {
@@ -26,5 +26,10 @@ export async function getCenterByIdService(centerId: number) {
 export async function getAllCentersService() {
     const centers = await getAllCenters();
     return centers;
+}
+
+export async function deleteCenterByIdService(centerId: number) {
+    const deletedCenter = await deleteCenterById(centerId);
+    return deletedCenter;
 }
 

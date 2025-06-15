@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { createCenterHolidayService, getAllCenterHolidaysService, getCenterHolidayByIdService } from "../services/centerHoliday.service";
+import { createCenterHolidayService, deleteCenterHolidayByIdService, getAllCenterHolidaysService, getCenterHolidayByIdService } from "../services/centerHoliday.service";
 import { Request, Response, NextFunction } from "express";
 
 export async function createCenterHolidayHandler(req:Request, res:Response, next:NextFunction) {
@@ -30,6 +30,17 @@ export async function getAllCenterHolidaysHandler(req:Request, res:Response, nex
     res.status(StatusCodes.OK).json({
         success: true,
         message: "All center holidays retrieved successfully",
+        data: centerHolidayResponse,
+    });
+}
+
+export async function deleteCenterHolidayByIdHandler(req:Request, res:Response, next:NextFunction) {
+    
+    const centerHolidayResponse = await deleteCenterHolidayByIdService(Number(req.params.id));
+
+    res.status(StatusCodes.OK).json({
+        success: true,
+        message: "Center holiday deleted successfully",
         data: centerHolidayResponse,
     });
 }
